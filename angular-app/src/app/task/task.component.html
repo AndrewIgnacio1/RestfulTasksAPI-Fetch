@@ -8,14 +8,14 @@
 </div>
 
 <div *ngIf="showEditForm">
-  <form (submit) = "onEdit(task)" class="postForm">
+  <form (submit)="onEdit()" onsubmit="return false">
     {{task.title}}
     <br>
     <label>Title:
-      <input type="text" name="editTask.title" [(ngModel)] = "task.title" />
+      <input type="text" name="task.title" [(ngModel)]="task.title" />
     </label>
     <label>Description:
-      <input type="text" name="editTask.description" [(ngModel)] = "task.description" />
+      <input type="text" name="task.description" [(ngModel)]="task.description" />
     </label>
     <input type="submit" value="EDIT" />
   </form>

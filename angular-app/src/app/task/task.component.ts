@@ -33,9 +33,10 @@ export class TaskComponent implements OnInit {
 		this.showEditForm = true;
 	}
 
-  onEdit(task_id, editTask){
-		editTask.showEditForm = false;
-		let observable = this._taskService.editTask(task_id, editTask);
+  onEdit(){
+    console.log(this.task);
+		this.showEditForm = false;
+		let observable = this._taskService.editTask(this.task._id, this.task);
 		observable.subscribe(data => {
 			console.log("Got data from post", data)
 		})

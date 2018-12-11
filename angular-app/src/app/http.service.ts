@@ -26,6 +26,7 @@ export class TaskService {
     }
 
     editTask(_id, editTask){
+        console.log(_id, editTask);
         return this._http.put(`/task/${_id}`, editTask);
     }
     // findTask(_id){
