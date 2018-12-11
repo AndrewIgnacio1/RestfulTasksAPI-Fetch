@@ -3,14 +3,14 @@ console.log("inside of tasks.js");
 const mongoose = require("mongoose");
 const Task = mongoose.model("Task");
 
-class Tasks {
+class TasksController {
     getAll(req, res){
         Task.find({}, function(err, tasks){
             if(err){
                 res.json({"status": "not ok", "errors": err});
             }
             else{
-                res.json({"status": "ok", "name": tasks});
+                res.json({"status": "ok", "task": tasks});
             }
         });
     }
@@ -21,7 +21,7 @@ class Tasks {
                 res.json({"status": "not ok", "errors": err});
             }
             else{
-                res.json({"status": "ok", "name": tasks});
+                res.json({"status": "ok", "task": tasks});
             }
         });
     }
@@ -38,16 +38,16 @@ class Tasks {
         });
     }
 
-    destroy(req, res){
+    remove(req, res){
         Task.remove({_id: req.params.id}, function(err, tasks){
             if(err){
                 res.json({"status": "not ok", "errors": err});
             }
             else{
-                res.json({"status": "ok", "name": tasks});
+                res.json({"status": "ok", "task": tasks});
             }
         })
     }
 }
 
-module.exports = new Tasks();
+module.exports = new TasksController();

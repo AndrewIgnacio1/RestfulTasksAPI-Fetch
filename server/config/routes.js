@@ -4,8 +4,8 @@ const Tasks = require("../controllers/tasks");
 
 module.exports = function(app){
     app.get("/tasks", Tasks.getAll);
-    app.get("/tasks/:id", Tasks.getId);
-    app.delete("/tasks/:id", Tasks.destroy);
+    app.get("/task/:id", Tasks.getId);
+    app.delete("/task/:id", Tasks.remove);
     app.put("/tasks/:id", Tasks.getId);
     app.post("/tasks", Tasks.create)
 }
