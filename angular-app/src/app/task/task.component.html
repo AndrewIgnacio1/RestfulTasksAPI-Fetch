@@ -1,6 +1,22 @@
 <div>
   <h3>{{ task.title }}</h3>
-  <p>{{ task.description }}</p>
   <button (click)="getRidOfTask(task._id)">Remove Task</button>
+  <button (click)="showDetails()">Show Details</button>
+  <button (click)="editOnClick(task._id, editTask)">Edit Task</button>
+  <p *ngIf="detailsclick">{{ task.description }}</p>
   <hr>
+</div>
+
+<div *ngIf="showEditForm">
+  <form (submit) = "onEdit(task)" class="postForm">
+    {{task.title}}
+    <br>
+    <label>Title:
+      <input type="text" name="editTask.title" [(ngModel)] = "task.title" />
+    </label>
+    <label>Description:
+      <input type="text" name="editTask.description" [(ngModel)] = "task.description" />
+    </label>
+    <input type="submit" value="EDIT" />
+  </form>
 </div>

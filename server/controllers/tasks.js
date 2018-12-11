@@ -16,12 +16,12 @@ class TasksController {
     }
 
     getId(req, res){
-        Task.find({_id: req.params.id}, function(err, tasks){
+        Task.find({_id: req.params.id}, function(err, task){
             if(err){
                 res.json({"status": "not ok", "errors": err});
             }
             else{
-                res.json({"status": "ok", "task": tasks});
+                res.json({"status": "ok", "task": task});
             }
         });
     }
@@ -47,6 +47,17 @@ class TasksController {
                 res.json({"status": "ok", "task": tasks});
             }
         })
+    }
+
+    update(req, res){
+        Task.findByIdAndUpdate(req.params.id, req.body, {runValidators: true}, (err, task) => {
+            if(err){
+                res.json({"status": "not ok", "errors": err});
+            }
+            else{
+                res.json({"status": "ok", "task": task});
+            }
+        });
     }
 }
 

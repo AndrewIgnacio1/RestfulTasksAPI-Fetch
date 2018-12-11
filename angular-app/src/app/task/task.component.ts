@@ -7,7 +7,8 @@ import { TaskService } from '../http.service'
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-
+  detailsclick = false;
+  showEditForm = false;
   constructor(private _taskService: TaskService) { }
 
   @Input() task: any;
@@ -23,5 +24,21 @@ export class TaskComponent implements OnInit {
       this.taskEvent.emit();
     })
   }
+
+  showDetails(task_id){
+		this.detailsclick = true;
+	}
+
+  editOnClick(task){
+		this.showEditForm = true;
+	}
+
+  onEdit(task_id, editTask){
+		editTask.showEditForm = false;
+		let observable = this._taskService.editTask(task_id, editTask);
+		observable.subscribe(data => {
+			console.log("Got data from post", data)
+		})
+	}
 
 }

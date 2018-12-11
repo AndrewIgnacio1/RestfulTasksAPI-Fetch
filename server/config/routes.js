@@ -6,6 +6,6 @@ module.exports = function(app){
     app.get("/tasks", Tasks.getAll);
     app.get("/task/:id", Tasks.getId);
     app.delete("/task/:id", Tasks.remove);
-    app.put("/tasks/:id", Tasks.getId);
+    app.put("/task/:id", Tasks.update);
     app.post("/tasks", Tasks.create)
 }

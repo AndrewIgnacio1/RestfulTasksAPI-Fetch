@@ -13,6 +13,10 @@ export class TaskService {
        return this._http.get('/tasks');
     }
 
+    getTask(_id){
+        return this._http.get(`/task/${_id}`);
+    }
+
     removeTask(_id){
         return this._http.delete(`/task/${_id}`);
     }
@@ -21,6 +25,9 @@ export class TaskService {
         return this._http.post("/tasks", newTask);
     }
 
+    editTask(_id, editTask){
+        return this._http.put(`/task/${_id}`, editTask);
+    }
     // findTask(_id){
     //     return this._http.get(`/task/${_id}`);
     // }
